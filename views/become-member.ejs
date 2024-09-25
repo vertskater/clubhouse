@@ -1,0 +1,10 @@
+<%- include('partials/header', {title: 'Become a Member'}) %>
+<main class="container">
+    <%- include('partials/errors') %>
+    <form action="/become-member" method="post">
+        <label for="membercode">Member-Code: </label>
+        <input type="text" name="membercode" id="membercode" placeholder="a70b7c6e-f2aa-4f7f-ab88-094bb45ef720">
+        <input type="submit" value="Get member status">
+    </form>
+</main>
+<%- include('partials/footer') %>

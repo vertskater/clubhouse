@@ -1,0 +1,34 @@
+<%- include('partials/header', {title: 'Member Messageboard'}) %>
+
+<main class="container">
+    <% if(currentUser) { %>
+        <h1>Welcome <%= currentUser.forename %> <%= currentUser.lastname %>
+            <% if(currentUser.role === 'member') { %>
+                <span>(<%= currentUser.role.toUpperCase() %>)</span>
+            <% } %>
+            <% if(currentUser.role === 'admin') { %>
+                <span>(<%= currentUser.role.toUpperCase() %>)</span>
+            <% } %>
+        </h1>
+    <% }else { %>
+        <h1>Welcome, please <a href="/login">log in</a></h1>
+    <% } %>
+    <%- include('all-messages', {messages}) %>
+</main>
+<script defer>
+  function showOverlay (title, id) {
+    const overlay = document.querySelector('#confirm-overlay')
+    const darkOverlay = document.querySelector('.dark-overlay')
+    overlay.dataset.id = id
+    overlay.classList.add('show')
+    darkOverlay.classList.add('show');
+    darkOverlay.style.top = `${window.scrollY}px`
+    darkOverlay.style.bottom = `-${window.scrollY}px`
+    const btnYes = document.querySelector('#yes')
+    btnYes.href = `/messages/delete/${id}`
+    const overlayTitle = document.querySelector('#overlay-title');
+    overlayTitle.textContent = `Are you sure to delete Message ${title}?`
+  }
+</script>
+<%- include('partials/confirm-overlay') %>
+<%- include('partials/footer') %>

@@ -1,0 +1,24 @@
+<% messages.forEach(message => { %>
+
+    <div class="message">
+        <div>
+            <h3><%= message.title %></h3>
+            <span><%= message.message %></span>
+            <% if(currentUser?.role === 'member' || currentUser?.role === 'admin') { %>
+                <span>by <%= message.forename %> <%= message.lastname %></span>
+            <% } %>
+        </div>
+        <% if(currentUser?.role === 'member' || currentUser?.role === 'admin') { %>
+            <div>
+                <span>created at: <%= message.date.toLocaleDateString() %></span>
+                <% if(currentUser) { %>
+                    <% if(currentUser.role === 'admin') { %>
+                        <a class="delete" onclick="showOverlay('<%= message.title %>', <%= message.id %>)">Delete
+                        </a>
+                    <% } %>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+
+<% }) %>

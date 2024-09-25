@@ -1,0 +1,14 @@
+<%- include('partials/header', {title: title} ) %>
+<main class="container">
+    <%- include('partials/errors') %>
+    <form action="/login" method="post">
+        <label for="username">E-Mail</label>
+        <input type="email" name="username" id="username">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password">
+        <input type="submit" value="Login">
+    </form>
+    <span class="sign-up-link"> Not a Member yet? <a href="/sign-up">Sign up for a new Account</a></span>
+</main>
+
+<%- include('partials/footer' ) %>

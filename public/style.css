@@ -70,6 +70,17 @@ hr {
     border: 1px solid var(--special-color);
 }
 
+ul.member-codes {
+    li {
+        margin: 1rem 0;
+        list-style-type: none;
+        background-color: lightgrey;
+        padding: .5rem;
+        border-radius: 5px;
+        
+    }
+}
+
 header {
     border-bottom: 1px solid var(--light-color);
 

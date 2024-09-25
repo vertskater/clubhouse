@@ -1,6 +1,6 @@
 const indexRouter = require("express").Router();
 const passport = require("passport");
-const { isAuth } = require("./authMiddleware");
+const { isAuth, isMember } = require("./authMiddleware");
 
 //Homepage get
 const indexController = require("../controllers/indexController");
@@ -34,4 +34,10 @@ indexRouter.get("/logout", (req, res, next) => {
 //become-member form GET, POST
 indexRouter.get("/become-member", isAuth, indexController.becomeMemberGet);
 indexRouter.post("/become-member", isAuth, indexController.becomeMemberPost);
+indexRouter.get(
+  "/become-member/codes",
+  isAuth,
+  isMember,
+  indexController.memberCodes
+);
 module.exports = indexRouter;

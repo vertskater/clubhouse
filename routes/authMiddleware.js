@@ -19,7 +19,18 @@ const isAdmin = (req, res, next) => {
   });
 };
 
+const isMember = (req, res, next) => {
+  if (req.user.role === "member" || req.user.role === "admin") {
+    return next();
+  }
+  res.render("not-authorized", {
+    title: "not authorized",
+    message: "Sorry, You are not authorized to view this content",
+  });
+};
+
 module.exports = {
   isAuth,
+  isMember,
   isAdmin,
 };

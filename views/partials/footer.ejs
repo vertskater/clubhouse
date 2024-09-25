@@ -1,10 +1,14 @@
 <footer>
     <ul>
-        <li><a href="#">Privacy Policy</a></li>
+        <% if (currentUser) { %>
+            <% if(currentUser.role === 'member' || currentUser.role === 'admin') { %>
+                <li><a href="/become-member/codes">Member Codes</a></li>
+            <% } %>
+        <% } %>
         <li><a href="#">Terms of Service</a></li>
         <li><a href="#">Contact Us</a></li>
     </ul>
     <span>
-        &copy; Christoph Mitterwallner, All Rights Reserved
+      <a href="https://github.com/vertskater">  &copy; Christoph Mitterwallner, All Rights Reserved</a>
     </span>
 </footer>

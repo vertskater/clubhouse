@@ -1,0 +1,9 @@
+<%- include('partials/header', {title: title}) %>
+<main class="container">
+    <ul class="member-codes">
+        <% codes.forEach(item => { %>
+            <li><%= item.code %></li>
+        <% }) %>
+    </ul>
+</main>
+<%- include('partials/footer') %>
